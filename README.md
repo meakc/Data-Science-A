@@ -54,7 +54,7 @@ In this initial phase, the script focuses on loading and examining the datasets 
     plt.title('Customer Distribution by Region')
     plt.show()
     
-
+![Alt text](https://github.com/meakc/Data-Science-A/blob/main/customer_distribution_by_region.png?raw=true)
   - **Product Price Distribution by Category**: A box plot to display the price distribution across different product categories:
 
     ```python
