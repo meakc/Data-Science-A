@@ -64,7 +64,7 @@ In this initial phase, the script focuses on loading and examining the datasets 
     plt.xticks(rotation=45)
     plt.show()
     
-
+![Alt text](https://github.com/meakc/Data-Science-A/blob/main/product_price_distribution_by_catogory.png?raw=true)
   - **Transaction Value Distribution**: A histogram to illustrate the distribution of transaction values:
 
     ```python
@@ -73,7 +73,7 @@ In this initial phase, the script focuses on loading and examining the datasets 
     plt.title('Transaction Value Distribution')
     plt.show()
     
-
+![Alt text](https://github.com/meakc/Data-Science-A/blob/main/Transaction_value_distribution.png?raw=true)
   These visualizations help in identifying patterns and anomalies within the data.
 
 - *Insights*: Based on the analysis, the script lists several business insights:
@@ -139,3 +139,56 @@ The second task involves identifying customers with similar purchasing behaviors
   lookalike_df = pd.DataFrame.from_dict(lookalike_results, orient='index',
                                         columns=['Lookalike1', 'Lookalike2', 'Lookalike3'])
   lookalike_df.to_csv('Lookalike.csv')
+
+**3: Customer Segmentation**
+
+**Install Necessary Libraries**
+Run the following command to install the required libraries:
+`!pip install pandas scikit-learn matplotlib seaborn`
+
+**Import Required Libraries**
+The script uses the following libraries:
+- `pandas` for data manipulation
+- `scikit-learn` for clustering and scaling
+- `matplotlib` and `seaborn` for visualization
+
+**Load Datasets**
+Datasets are loaded using the URLs provided:
+- `customers_url`: [Customers Dataset](https://drive.google.com/uc?id=1bu_--mo79VdUG9oin4ybfFGRUSXAe-WE)
+- `products_url`: [Products Dataset](https://drive.google.com/uc?id=1IKuDizVapw-hyktwfpoAoaGtHtTNHfd0)
+- `transactions_url`: [Transactions Dataset](https://drive.google.com/uc?id=1saEqdbBB-vuk2hxoAf4TzDEsykdKlzbF)
+
+These datasets are read into DataFrames using `pandas.read_csv`.
+
+**Merge Datasets and Verify**
+The `transactions`, `customers`, and `products` datasets are merged into a single DataFrame to consolidate all relevant information. If the `Price` column is missing or entirely null, a default value of `0.0` is assigned.
+
+**Feature Selection for Clustering**
+Key features used for clustering include:
+- `TotalValue`: The total value of transactions per customer
+- `Quantity`: The total quantity of items purchased
+- `Price`: The average price of products purchased
+
+**Normalize Data**
+The features are normalized using `StandardScaler` to ensure they are on the same scale.
+
+**Perform K-Means Clustering**
+K-Means clustering is applied with 4 clusters. Each customer is assigned to a cluster, which is added as a new column in the dataset.
+
+**Evaluate Clusters**
+The quality of the clustering is evaluated using the Davies-Bouldin Index, which provides a measure of cluster separation and compactness.
+
+**Visualize Clusters**
+A scatter plot is generated to visualize the customer clusters in a 2D space using scaled features.
+
+**Save Clustering Results**
+The clustering results, including the cluster assignments, are saved to a file named `Customer_Segmentation.csv`.
+
+**Outputs**:
+1. **Davies-Bouldin Index**: Evaluates the quality of the clustering model.
+2. **Visualization**: Displays customer clusters in a scatter plot.
+3. **Saved Results**: The segmentation details are saved in `Customer_Segmentation.csv`.
+![Alt text](https://github.com/meakc/Data-Science-A/blob/main/customer_segmentation_clusture.png?raw=true)
+
+
+# BY ABHISHEK KUMAR CHOUDHARY
